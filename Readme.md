@@ -13,6 +13,8 @@ This application is being developed for **educational purposes**. The focus is o
 - [x] **AutoLot.Dal**: Data Access Layer
 - [x] **AutoLot.Dal.Tests**: Unit Testing for DAL
 - [x] **AutoLot.Models**: Data Models
+- [x] **AutoLot.Api**: RESTful Api
+- [x] **AutoLot.MVC**: Frontend (Blazor)
 
 #### Included Features:
 - [x] **Migrations**: Database migrations for managing schema changes.
