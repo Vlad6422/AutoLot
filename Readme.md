@@ -23,16 +23,17 @@ This application is being developed for **educational purposes**. The focus is o
 - [x] **IntegrationTests**: Tests covering the integration between components.
 - [x] **ViewModels**: View models for data transfer between controller and views.
 - [x] **SeliLog**: Logging using SeliLog for capturing application logs.
+- [x] **ASP.NET Core MVC/Web API**: Implementing web and API interfaces.
+- [x] **Controllers**: Development of MVC controllers to handle requests.
+- [x] **Filters**: Creating custom filters for handling requests and responses.
+- [x] **Models**: Further development of models as required.
+- [x] **ViewComponents**: Developing view components for reusable view logic.
+- [x] **Views**: Creation of views for the MVC application.
+- [x] **AutoLot.Services**: Service layer implementation for business logic.
+- [x] **ApiWrapper**: Wrapping external API calls within the application.
+- [x] **Logging**: Enhancing logging mechanisms for better diagnostics.
 
 ### Remaining Tasks:
-- [ ] **ASP.NET Core MVC/Web API**: Implementing web and API interfaces.
-- [ ] **Controllers**: Development of MVC controllers to handle requests.
-- [ ] **Filters**: Creating custom filters for handling requests and responses.
-- [ ] **Models**: Further development of models as required.
-- [ ] **TagHelpers**: Building custom tag helpers for view rendering.
-- [ ] **ViewComponents**: Developing view components for reusable view logic.
-- [ ] **Views**: Creation of views for the MVC application.
-- [ ] **AutoLot.Services**: Service layer implementation for business logic.
-- [ ] **ApiWrapper**: Wrapping external API calls within the application.
-- [ ] **Logging**: Enhancing logging mechanisms for better diagnostics.
+
+- [ ] **TagHelpers**: Building custom tag helpers for view rendering.(Ready only For Car.)
 - [ ] ...
