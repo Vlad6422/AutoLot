@@ -1,0 +1,9 @@
+﻿@model IEnumerable<CustomerOrderViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Orders</h1>
+
+<partial name="Partials/_OrderListPartial" model="@Model" />

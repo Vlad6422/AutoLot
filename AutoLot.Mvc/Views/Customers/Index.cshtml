@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customers</h1>
+
+<partial name="Partials/_CustomerListPartial" model="@Model" />

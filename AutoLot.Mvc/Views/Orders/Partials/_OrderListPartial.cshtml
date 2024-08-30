@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CustomerOrderViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            
+                <th>
+                    List of All Orders
+                </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullDetail)
+                    </td>
+                
+
+            </tr>
+        }
+    </tbody>
+</table>

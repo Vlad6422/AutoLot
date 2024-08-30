@@ -4,6 +4,9 @@ using AutoLot.Dal.Repos;
 using Microsoft.EntityFrameworkCore;
 using AutoLot.Dal.Initialization;
 using AutoLot.Services.Logging;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using AutoLot.Mvc.Models;
+using AutoLot.Services.ApiWrapper;
 
 namespace AutoLot.Mvc
 {
@@ -34,6 +37,31 @@ namespace AutoLot.Mvc
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddScoped<ICreditRiskRepo, CreditRiskRepo>();
 
+
+            builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
+            builder.Services.Configure<DealerInfo>(builder.Configuration.GetSection(nameof(DealerInfo)));
+
+            builder.Services.Configure<CreatorInfo>(builder.Configuration.GetSection(nameof(CreatorInfo)));
+
+
+            builder.Services.ConfigureApiServiceWrapper(builder.Configuration);
+
+            if(builder.Environment.IsDevelopment() || builder.Environment.IsEnvironment("Local"))
+            {
+                builder.Services.AddWebOptimizer(false,false);
+            }
+            else
+            {
+                builder.Services.AddWebOptimizer(options =>
+                {
+                    options.MinifyCssFiles();
+                    //options.MinifyJsFiles();
+                    options.MinifyJsFiles("js/site.js");
+                    options.MinifyJsFiles("lib/**/*.js");
+                });
+            }
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -59,6 +87,8 @@ namespace AutoLot.Mvc
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseWebOptimizer();
 
             app.MapControllerRoute(
                 name: "default",

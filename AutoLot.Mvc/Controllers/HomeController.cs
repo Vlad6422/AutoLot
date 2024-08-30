@@ -1,6 +1,7 @@
 using AutoLot.Mvc.Models;
 using AutoLot.Services.Logging;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
 namespace AutoLot.Mvc.Controllers
@@ -14,17 +15,21 @@ namespace AutoLot.Mvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices] IOptionsMonitor<DealerInfo> dealerMonitor)
         {
-            _logger.LogAppInformation("This is a test.");
-            return View();
+            var vm = dealerMonitor.CurrentValue;
+            return View(vm);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Privacy([FromServices] IOptionsMonitor<CreatorInfo> creatorMonitor)
+        {
+            var vm = creatorMonitor.CurrentValue;
+            return View(vm);
+        }
+        public IActionResult InProcess()
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

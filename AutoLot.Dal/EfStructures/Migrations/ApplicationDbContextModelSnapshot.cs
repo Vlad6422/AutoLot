@@ -122,7 +122,7 @@ namespace AutoLot.Dal.EfStructures.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Makes");
+                    b.ToTable("Makes", (string)null);
                 });
 
             modelBuilder.Entity("AutoLot.Models.Entities.Order", b =>
@@ -261,7 +261,7 @@ namespace AutoLot.Dal.EfStructures.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_CreditRisks_Customers");
 
-                    b.OwnsOne("AutoLot.Models.Entities.Owned.Person", "PersonalInformation", b1 =>
+                    b.OwnsOne("AutoLot.Models.Entities.CreditRisk.PersonalInformation#AutoLot.Models.Entities.Owned.Person", "PersonalInformation", b1 =>
                         {
                             b1.Property<int>("CreditRiskId")
                                 .HasColumnType("int");
@@ -300,7 +300,7 @@ namespace AutoLot.Dal.EfStructures.Migrations
 
             modelBuilder.Entity("AutoLot.Models.Entities.Customer", b =>
                 {
-                    b.OwnsOne("AutoLot.Models.Entities.Owned.Person", "PersonalInformation", b1 =>
+                    b.OwnsOne("AutoLot.Models.Entities.Customer.PersonalInformation#AutoLot.Models.Entities.Owned.Person", "PersonalInformation", b1 =>
                         {
                             b1.Property<int>("CustomerId")
                                 .HasColumnType("int");
