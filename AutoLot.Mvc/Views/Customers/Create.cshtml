@@ -1,19 +1,19 @@
-﻿@model Car
+﻿@model Customer
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create a New Car</h1>
+<h1>Add new Customer</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Cars" asp-action="Create">
+        <form asp-controller="Customers" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.EditorForModel()
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Create <i class="fas fa-plus"></i></button>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <car-list></car-list>
+                <customer-create-list></customer-create-list>
             </div>
         </form>
     </div>

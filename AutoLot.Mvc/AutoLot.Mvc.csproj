@@ -23,4 +23,8 @@
     <ProjectReference Include="..\AutoLot.Services\AutoLot.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TagHelpers\Order\" />
+  </ItemGroup>
+
 </Project>

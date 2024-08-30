@@ -26,6 +26,14 @@ namespace AutoLot.Services.ApiWrapper
             //var result = await JsonSerializer.DeserializeAsync<IList<Category>>(await response.Content.ReadAsStreamAsync());
             return result;
         }
+        public async Task<IList<Customer>> GetCustomersAsync()
+        {
+            var response = await _client.GetAsync($"{_settings.Uri}api/Customers");
+            response.EnsureSuccessStatusCode();
+            //var result = await response.Content.ReadFromJsonAsync<IList<Customer>>();
+            var result = await JsonSerializer.DeserializeAsync<IList<Customer>>(await response.Content.ReadAsStreamAsync());
+            return result;
+        }
 
         public async Task<IList<Car>> GetCarsByMakeAsync(int id)
         {
@@ -43,7 +51,13 @@ namespace AutoLot.Services.ApiWrapper
             var result = await response.Content.ReadFromJsonAsync<Car>();
             return result;
         }
-
+        public async Task<Customer> GetCustomerAsync(int id)
+        {
+            var response = await _client.GetAsync($"{_settings.Uri}api/Customers/{id}");
+            response.EnsureSuccessStatusCode();
+            var result = await response.Content.ReadFromJsonAsync<Customer>();
+            return result;
+        }
         public async Task<Car> AddCarAsync(Car entity)
         {
             var response = await PostAsJson($"{_settings.Uri}{_settings.CarBaseUri}",
@@ -62,6 +76,18 @@ namespace AutoLot.Services.ApiWrapper
 
             return await response.Content.ReadFromJsonAsync<Car>();
         }
+        public async Task<Customer> AddCustomerAsync(Customer entity)
+        {
+            var response = await PostAsJson($"{_settings.Uri}api/Customers",
+                JsonSerializer.Serialize(entity));
+            if (response == null)
+            {
+                throw new Exception("Unable to communicate with the service");
+            }
+
+            var location = response.Headers?.Location?.OriginalString;
+            return await response.Content.ReadFromJsonAsync<Customer>();
+        }
 
         public async Task<Car> UpdateCarAsync(int id, Car entity)
         {
@@ -70,10 +96,23 @@ namespace AutoLot.Services.ApiWrapper
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Car>();
         }
+        public async Task<Customer> UpdateCustomerAsync(int id, Customer entity)
+        {
+            var response = await PutAsJson($"{_settings.Uri}api/Customers/{id}",
+                JsonSerializer.Serialize(entity));
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<Customer>();
+        }
 
         public async Task DeleteCarAsync(int id, Car entity)
         {
             var response = await DeleteAsJson($"{_settings.Uri}{_settings.CarBaseUri}/{id}",
+                JsonSerializer.Serialize(entity));
+            response.EnsureSuccessStatusCode();
+        }
+        public async Task DeleteCustomerAsync(int id, Customer entity)
+        {
+            var response = await DeleteAsJson($"{_settings.Uri}api/Customers/{id}",
                 JsonSerializer.Serialize(entity));
             response.EnsureSuccessStatusCode();
         }

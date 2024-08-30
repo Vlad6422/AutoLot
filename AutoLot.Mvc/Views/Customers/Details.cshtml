@@ -1,0 +1,14 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for @Model.PersonalInformation.FullName</h1>
+@Html.DisplayForModel()
+@*@Html.DisplayForModel("CarWithColors")*@
+<div>
+    <customer-edit item-id="@Model.Id"></customer-edit>
+    <customer-delete item-id="@Model.Id"></customer-delete>
+    <customer-list></customer-list>
+</div>

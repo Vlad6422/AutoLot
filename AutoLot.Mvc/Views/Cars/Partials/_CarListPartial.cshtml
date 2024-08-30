@@ -7,7 +7,7 @@
     }
 }
 <p>
-    <item-create></item-create>
+    <car-create></car-create>
 </p>
 <table class="table">
     <thead>
@@ -44,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.PetName)
                 </td>
                 <td>
-                    <item-edit item-id="@item.Id"></item-edit> |
-                    <item-details item-id="@item.Id"></item-details> |
-                    <item-delete item-id="@item.Id"></item-delete>
+                    <car-edit item-id="@item.Id"></car-edit> |
+                    <car-details item-id="@item.Id"></car-details> |
+                    <car-delete item-id="@item.Id"></car-delete>
                 </td>
             </tr>
         }

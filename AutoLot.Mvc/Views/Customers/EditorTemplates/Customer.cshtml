@@ -1,0 +1,12 @@
+﻿@model Customer
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="form-group">
+    <label asp-for="PersonalInformation.FirstName" class="col-form-label"></label>
+    <input asp-for="PersonalInformation.FirstName" class="form-control" />
+    <span asp-validation-for="PersonalInformation.FirstName" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="PersonalInformation.LastName" class="col-form-label"></label>
+    <input asp-for="PersonalInformation.LastName" class="form-control" />
+    <span asp-validation-for="PersonalInformation.LastName" class="text-danger"></span>
+</div>

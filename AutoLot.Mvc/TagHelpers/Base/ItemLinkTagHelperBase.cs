@@ -1,5 +1,4 @@
-﻿using AutoLot.Mvc.Controllers;
-using AutoLot.Services.Utilities;
+﻿using AutoLot.Services.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -11,6 +10,7 @@ namespace AutoLot.Mvc.TagHelpers.Base
     {
         protected readonly IUrlHelper UrlHelper;
         public int? ItemId { get; set; }
+        public string ControllerName { get; set; } // Add this property
 
         protected ItemLinkTagHelperBase(IActionContextAccessor contextAccessor, IUrlHelperFactory urlHelperFactory)
         {
@@ -22,8 +22,8 @@ namespace AutoLot.Mvc.TagHelpers.Base
         {
             output.TagName = "a"; // Replaces <item-list> with <a> tag
             var target = (ItemId.HasValue)
-                ? UrlHelper.Action(actionName, nameof(CarsController).RemoveController(), new { id = ItemId })
-                : UrlHelper.Action(actionName, nameof(CarsController).RemoveController());
+                ? UrlHelper.Action(actionName, ControllerName.RemoveController(), new { id = ItemId })
+                : UrlHelper.Action(actionName, ControllerName.RemoveController());
             output.Attributes.SetAttribute("href", target);
             output.Attributes.Add("class", className);
             output.Content.AppendHtml($@"{displayText} <i class=""fas fa-{fontAwesomeName}""></i>");

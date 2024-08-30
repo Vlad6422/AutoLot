@@ -3,7 +3,7 @@
     <thead>
         <tr>
 
-
+            <customer-create></customer-create>
             <th>
                 @Html.DisplayNameFor(model => model.PersonalInformation.FirstName)
             </th>
@@ -27,7 +27,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.PersonalInformation.LastName)
                 </td>
+                <td>
+                    <customer-edit item-id="@item.Id"></customer-edit> |
+                    <customer-details item-id="@item.Id"></customer-details> |
+                    <customer-delete item-id="@item.Id"></customer-delete>
+                </td>
             </tr>
+
         }
     </tbody>
 </table>
