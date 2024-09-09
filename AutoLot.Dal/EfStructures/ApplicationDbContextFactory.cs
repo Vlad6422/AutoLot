@@ -9,7 +9,7 @@ namespace AutoLot.Dal.EfStructures
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             // Change To Your Server Name (I use my local custom)
-            var connectionString = "Put here Connection String";
+            var connectionString = "Server=VLAD;Database=AutoLot;Trusted_Connection=True;TrustServerCertificate=True";
             optionsBuilder.UseSqlServer(connectionString);
             Console.WriteLine(connectionString);
             return new ApplicationDbContext(optionsBuilder.Options);
