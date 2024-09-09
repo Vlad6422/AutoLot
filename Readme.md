@@ -35,10 +35,47 @@ This application is designed for **educational purposes**, focusing on demonstra
 - **ApiWrapper**: Wrapping external API calls within the application.
 - **Logging**: Advanced logging mechanisms for detailed diagnostics.
 - **TagHelpers**: Custom tag helpers for improved view rendering (Ready only for Car).
+- **BackUp**: Database Back-Up.
+- **Docker**: .
 
 ## Remaining Tasks
 - [ ] ...
 
+# How to Run the Application
+
+Follow these steps to set up and run the application:
+
+1. **Clone the Repository**  
+   Use the following command to clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/Vlad6422/AutoLot.git
+   ```
+
+2. **Open in Visual Studio**  
+   Open the solution in **Visual Studio**. When the solution loads, Visual Studio will automatically download all the required packages.
+
+3. **Update Connection Strings**  
+   Update the database connection strings in the **AutoLot.Dal**, **AutoLot.Api**, and **AutoLot.MVC** projects:
+   - Locate the connection string section in the `appsettings.json` file in each project.
+   - In Dal change Factory class.
+   - Modify the connection string to point to your local or remote database server.
+
+4. **Apply Database Migrations** (in Dev Console & AutoLot.Dal Project)  
+   Open the **Developer Console** and navigate to the **AutoLot.Dal** project directory. Then run the following command to apply the database migrations:
+   ```bash
+   dotnet ef database update
+   ```
+
+   Alternatively, if a backup of the database is available, you can restore it to your server.
+
+5. **Configure Startup**  
+   Ensure that both the **API** and **MVC** projects are set to run during startup:
+   - Right-click the solution in **Visual Studio**.
+   - Select **Properties**.
+   - Under **Startup Project**, select **Multiple startup projects** and set both the **API** and **MVC** projects to start.
+
+6. **Run the Application**  
+   Hit **F5** in Visual Studio to build and run the application. The API and the MVC front-end should now be accessible.
 ## Screenshots
 
 **API:**
